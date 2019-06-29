@@ -5,8 +5,24 @@
   </head>
   <body>
     <h1>新しい連絡先</h1>
+
+    <% if @contact.errors.present? %>
+      エラーがあります
+      <ul> 
+        <% @contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <form action="contacts" method="post">
-      <input type="text" name="name">
+      <div>
+        <label for="contact_name">名前</label>
+        <input type="text" name="name" id="contact_name" value="<%= @contact.name %>">
+      </div>
+      <div>
+        <label for="contact_email">email</label>
+        <input type="text" name="email" id="contact_email" value="<%= @contact.email %>">
+      </div>
       <input type="submit">
     </form>
     <div>

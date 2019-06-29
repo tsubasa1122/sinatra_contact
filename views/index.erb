@@ -5,7 +5,31 @@
     <link rel= "stylesheet" href="/style.css">
   </head>
   <body>
-    <h1>これば</h1>
+    <h1>これは連絡帳です</h1>
+
+    <% if @message %>
+      <div class="message"><%= @message %></div>
+    <% end %>
+    <div>
+      <table border = "1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contacts.each do |contact| %>
+            <tr>
+              <td><%= contact.id %></td>
+              <td><%= contact.name %></td>
+              <td><%= contact.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
     <div>
       <a href="/contact_new">連絡先の新規作成</a>
     </div>
